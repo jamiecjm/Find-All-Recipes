@@ -1,0 +1,67 @@
+<%= form_for(recipe) do |f| %>
+
+<div class="form-group">
+  <%=f.label :title%>
+  <%=f.text_field :title%>
+</div>
+
+<div class="form-group">
+  <%=f.label :desciption%>
+  <%=f.text_area :description%>
+</div>
+
+<div class="form-group">
+  <%=f.label :servings%>
+  <%=f.number_field :servings%>
+</div>
+
+<div class="form-group">
+  <%=f.label :cooktime1%>
+  <%=f.number_field :cooktime1%>
+</div>
+
+<div class="form-group">
+  <%=f.label :cooktime2%>
+  <%=f.number_field :cooktime2%>
+</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+ create_table "ingredients", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.float    "amount"
+    t.string   "unit"
+    t.string   "ingredient"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
+  end
+
+  create_table "instructions", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "step"
+    t.string   "title"
+    t.text     "description"
+    t.string   "step_photo"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["recipe_id"], name: "index_instructions_on_recipe_id", using: :btree
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "servings"
+    t.integer  "cooktime1"
+    t.integer  "cooktime2"
+    t.string   "food_photo"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "cuisine_id"
+    t.integer  "main_ingredient_id"
+    t.index ["cuisine_id"], name: "index_recipes_on_cuisine_id", using: :btree
+    t.index ["main_ingredient_id"], name: "index_recipes_on_main_ingredient_id", using: :btree
