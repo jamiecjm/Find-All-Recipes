@@ -1,0 +1,36 @@
+
+<figure class="snip1515 animated fadeIn">
+
+<div class="profile-image" style="margin:0px 0px 0px 10px">
+	<% if @user.avatar.present? %>
+		<%= image_tag @user.avatar.url, :class => "img-responsive img-circle" %>
+	<% else %> 
+		<%= image_tag @user.avatar.default_url, :class => "img-responsive img-circle" %>
+	<%end%>
+</div>
+
+<figcaption>
+	<h3><%=@user.name%></h3>
+	<table class="table table-user">
+		<tbody class="table table-user">
+
+			<tr>
+				<th class="thead-user">E-mail: </th>
+				<td class="text-user"><%=@user.email%></td>
+			</tr>
+
+			<tr>
+				<th class="thead-user">Birthday: </th>
+				<td class="text-user"><%=@user.birthday%></td>
+			</tr>
+
+			<tr>
+				<th class="thead-user">Total Recipes: </th>
+				<td class="text-user"><%=@user.recipes.count%></td>
+			</tr>
+
+		</tbody>
+	</table>
+
+</figcaption>
+</figure>

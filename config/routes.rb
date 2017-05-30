@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root "pages#index"
 
   resources :recipes
-  resources :users
+  resources :users 
+  get '/users/:id/recipes' => "users#recipes"
   resources :sessions, controller: "sessions", only: [:new,:create,:destroy]
+  resources :favourites, controller: "favourites", only: [:new,:index]
 end

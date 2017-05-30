@@ -1,4 +1,87 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
+<%if current_user == @recipe.user%>
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> | 
+<%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+<%end%>
+
+
+<div class="panel panel-default display" style="position: relative;">
+
+    <nav class="navbar navbar-default" style="position: absolute;width: 100%;opacity:0.8;">
+      <div class="container-fluid" >
+        <div class="navbar-header">
+          <div class="navbar-brand"><%=@recipe.title%></div>
+        </div>
+      </div>
+    </nav>
+
+    <%if @recipe.food_photo.present?%>
+		<%=image_tag @recipe.food_photo.url if @recipe.food_photo.present?%>
+	<%else%>
+		<%=image_tag @recipe.food_photo.default_url%>
+	<%end%>
+
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="page-header col-xs-12 col-sm-12 col-md-12">
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				COOK TIME<br>
+				<%=@recipe.cooktime1%> - <%=@recipe.cooktime2%> minutes
+			</div>
+
+			<div class="col-xs-6 col-sm-6 col-md-6">
+				MAKES<br>
+				<%=@recipe.servings%> servings
+			</div>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class ="description-box">
+				<p><%=@recipe.description%></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="page-header tag col-md-12">
+			INGREDIENTS
+		</div>
+		<ul style="list-style-type:none">
+		<%@recipe.ingredients.each do |ing|%>
+			<li><%=ing.amount.round%> <%=ing.unit%> <%=ing.ingredient%></li>
+		<%end%>
+		</ul>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="page-header tag col-md-12">
+			INSTRUCTIONS<button class="btn btn-default" style="float:right">Open in Slide Mode</button>
+		</div>
+
+			<%@recipe.instructions.order("step").each do |ins|%>
+				<div class="col-md-6">
+
+					<%if ins.step_photo.present?%>
+						<%=image_tag ins.step_photo.url%>
+					<%else%>
+						<%=image_tag ins.step_photo.default_url%>
+					<%end%>
+					<div class="page-header"><%=ins.step%>&nbsp<%=ins.title%></div>
+					<p><%=ins.description%></p>
+
+
+				</div>
+
+			<%end%>
+	</div>
+</div>
+
+

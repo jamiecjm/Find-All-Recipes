@@ -57,3 +57,4 @@ gem 'carrierwave'
 gem "mini_magick"
 gem "nested_form"
 gem 'rails_admin'
+gem 'faker'

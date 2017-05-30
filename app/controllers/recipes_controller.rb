@@ -1,10 +1,12 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.includes(:user,:favourites)
   end
 
   # GET /recipes/1
@@ -26,28 +28,24 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
-      else
-        format.html { render :new }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if @recipe.save
+      flash[:success] = "Recipe created!"
+      redirect_to @recipe
+    else
+      flash.now[:danger] = @recipe.errors.full_messages.first
+      render "new"
     end
   end
 
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if @recipe.update(recipe_params)
+      flash[:success] = "Recipe updated!"
+      redirect_to @recipe
+    else
+      flash.now[:danger] = @recipe.errors.full_messages.first
+      render "edit"
     end
   end
 
@@ -56,7 +54,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to '/', notice: 'Recipe was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +67,12 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.fetch(:recipe, {})
+      params.require(:recipe).permit(:user_id,:title,:description,:servings,:cooktime1,:cooktime2,:food_photo,:cuisine_id,:main_ingredient_id,
+                                      ingredients_attributes: [:id,:_destroy,:amount,:unit,:ingredient],
+                                      instructions_attributes: [:id,:_destroy,:step,:title,:description,:step_photo])
     end
+
+
 end
+
+

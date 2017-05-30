@@ -1,0 +1,12 @@
+            <div class="col-md-6">
+              <div>
+                <%=fff.label :step_photo%>
+                <%=fff.file_field :step_photo,class: "form-control"%>
+                <div class="page-header"><%=fff.number_field :step,placeholder:"Step"%>
+                &nbsp
+                <%=fff.text_field :title,placeholder:"Step Title"%></div>
+                <%=fff.label :description%>
+                <%=fff.text_area :description,class: "form-control", rows: "10"%>
+              </div>
+              <%= fff.link_to_remove "Remove this step" %>
+            </div>

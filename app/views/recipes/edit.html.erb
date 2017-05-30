@@ -1,6 +1,40 @@
 <h1>Editing Recipe</h1>
-
-<%= render 'form', recipe: @recipe %>
-
 <%= link_to 'Show', @recipe %> |
 <%= link_to 'Back', recipes_path %>
+
+<%= nested_form_for(@recipe) do |f| %>
+
+<%= render 'form', recipe: @recipe, f:f %>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="page-header tag col-md-12">
+          INGREDIENTS
+        </div>
+        <ul style="list-style-type:none">
+          <%=f.fields_for :ingredients do |ff|%>
+            <%=render "ingredient", ff: ff%> 
+          <%end%>
+          <%= f.link_to_add "+", :ingredients, class: "btn btn-default" %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="page-header tag col-md-12">
+          INSTRUCTIONS
+        </div>
+          <%=f.fields_for :instructions do |fff|%>
+            <%=render "instructions", fff: fff%> 
+          <%end%>
+          <%= f.link_to_add "Add step", :instructions %>
+      </div>
+    </div> 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
