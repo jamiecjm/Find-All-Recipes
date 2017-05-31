@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-main_ingredients = ["Beef","Fish","Lamb","Pork","Poultry","Shellfish","Vegeterian"]
+main_ingredients = ["Beef","Chicken","Fish","Lamb","Pork","Poultry","Shellfish","Vegeterian"]
 cuisine = 
 ["African",
 "American",
