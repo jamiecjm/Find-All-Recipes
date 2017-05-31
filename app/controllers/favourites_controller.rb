@@ -1,6 +1,7 @@
 class FavouritesController < ApplicationController
 
 	# before_action :login_required, only: :new
+	
 
 	def new
 		respond_to do |format|

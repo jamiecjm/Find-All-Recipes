@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  
   before_action :set_user, only: [:show, :edit, :update, :destroy,:recipes]
   before_action :confirm_current_user, only: [:edit,:update,:destroy]
+
 
   # GET /users
   # GET /users.json
@@ -82,7 +84,7 @@ class UsersController < ApplicationController
 
 
     def confirm_current_user
-      if @user != @current_user && @current_user.role != "Admin"
+      if @user != current_user && current_user.role != 0
         flash[:danger] = "Sorry, you don't have access to that page"
         redirect_to '/'
       end

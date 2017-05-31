@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
+  
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :confirm_current_user, only: [:edit,:update,:destroy]
+
+  
 
   require 'wikipedia'
 
@@ -114,7 +117,7 @@ class RecipesController < ApplicationController
     end
 
     def confirm_current_user
-      if @recipe.user != @current_user && @current_user.role != "Admin"
+      if @recipe.user != current_user && current_user.role != 0
         flash[:danger] = "Sorry, you don't have access to that page"
         redirect_to '/'
       end

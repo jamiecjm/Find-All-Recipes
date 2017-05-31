@@ -56,7 +56,7 @@ gem 'jquery-ui-rails'
 gem 'carrierwave'
 gem "mini_magick"
 gem "nested_form"
-gem 'rails_admin'
+gem 'activeadmin'
 gem 'faker'
 gem 'omniauth-facebook'
 gem 'omniauth'

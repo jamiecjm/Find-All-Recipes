@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_current_user
 
-
+  
   def login_required
   	if !signed_in?
   		session[:path] = request.fullpath
