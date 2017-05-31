@@ -32,23 +32,23 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <%=f.label :cooktime, 'COOK TIME'%><br>
-          <span class="col-md-3">
-          <%=f.number_field :cooktime1,class: "form-control",required: true%>
+          <span class="col-xs-3 col-sm-3 col-md-3">
+          <%=f.number_field :cooktime1,class: "form-control",required: true,placeholder: "10"%>
           </span>
-          <span class="col-md-1">-</span>
-          <span class="col-md-3"> 
-          <%=f.number_field :cooktime2,class: "form-control",required: true%> 
+          <span class="col-xs-1 col-sm-1 col-md-1">-</span>
+          <span class="col-xs-3 col-sm-3 col-md-3"> 
+          <%=f.number_field :cooktime2,class: "form-control",required: true,placeholder: "20"%> 
           </span>
-          <span class="col-md-1">minutes</span>
+          <span class="col-xs-1 col-sm-1 col-md-1">minutes</span>
           
         </div>
 
         <div class="col-xs-6 col-sm-6 col-md-6">
           <%=f.label :servings, "MAKES"%><br>
-          <span class="col-md-3">
-          <%=f.number_field :servings,class: "form-control",required: true%>
+          <span class="col-xs-3 col-sm-3 col-md-3">
+          <%=f.number_field :servings,class: "form-control",required: true,placeholder: "2"%>
           </span> 
-          <span class="col-md-1">servings</span>
+          <span class="col-xs-1 col-sm-1 col-md-1">servings</span>
         </div>
 
 

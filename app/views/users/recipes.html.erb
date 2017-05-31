@@ -7,7 +7,7 @@
 	<%=form_tag search_recipes_path(ids: @recipes.pluck(:id)),:remote => true,class: "navbar-form navbar-left" do%>
 	    <div class="form-group">
 		    <div class="col-xs-8 col-sm-8 col-md-8">
-		        <%=text_field_tag :search, nil, placeholder: "Search",class: "form-control"%>
+		        <%=text_field_tag :search, nil, placeholder: "Search by recipe name",class: "form-control"%>
 		    </div>
 		    <div class="col-xs-4 col-sm-4 col-md-4">
 		        <%=submit_tag "Go",class: "btn btn-default"%>

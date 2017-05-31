@@ -1,4 +1,14 @@
-            <li><%=ff.number_field :amount, placeholder: "Amount"%> 
-            <%=ff.text_field :unit, placeholder: "Unit",autofocus:false%> 
-            <%=ff.text_field :ingredient, placeholder: "Ingredient"%>
-            <%= ff.link_to_remove "-", class: "btn btn-default" %></li>
+<li class="form-group">
+<div class="col-xs-2 col-sm-2 col-md-2">
+<%=ff.number_field :amount, placeholder: "Amount eg. 1",class: "form-control"%> 
+</div>
+<div class="col-xs-2 col-sm-2 col-md-2">
+<%=ff.text_field :unit, placeholder: "Unit eg. clove",autofocus:false,class: "form-control"%> 
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6">
+<%=ff.text_field :ingredient, placeholder: "Ingredient eg. Garlic",class: "form-control"%>
+</div>
+<div class="col-xs-2 col-sm-2 col-md-2">
+<%= ff.link_to_remove "-", class: "btn btn-default" %>
+</div>
+</li>

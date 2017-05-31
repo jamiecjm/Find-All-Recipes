@@ -4,10 +4,11 @@
           INGREDIENTS
         </div>
         <ul style="list-style-type:none">
-          <%=f.fields_for :ingredients,Ingredient.new do |ff|%>
+          <%=f.fields_for :ingredients,Ingredient.new,class: "form-inline" do |ff|%>
             <%=render "ingredient", ff: ff%> 
           <%end%>
-          <%= f.link_to_add "+", :ingredients, class: "btn btn-default" %>
+          <br>
+          <%= f.link_to_add "+", :ingredients, class: "btn btn-default",style: "margin-left: 15px;" %>
         </ul>
       </div>
     </div>
