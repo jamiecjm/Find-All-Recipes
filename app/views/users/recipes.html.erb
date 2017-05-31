@@ -1,76 +1,32 @@
+<div class="col-xs-12 col-sm-8 col-md-9">
 <nav class="navbar navbar-default">
   <div class="container-fluid" >
     <div class="navbar-header">
-      <div class="navbar-brand">My Recipes</div>
+      <div class="navbar-brand"><%=@user.name%>'s Recipes</div>
     </div>
+	<%=form_tag search_recipes_path(ids: @recipes.pluck(:id)),:remote => true,class: "navbar-form navbar-left" do%>
+	    <div class="form-group">
+		    <div class="col-xs-8 col-sm-8 col-md-8">
+		        <%=text_field_tag :search, nil, placeholder: "Search",class: "form-control"%>
+		    </div>
+		    <div class="col-xs-4 col-sm-4 col-md-4">
+		        <%=submit_tag "Go",class: "btn btn-default"%>
+		    </div>
+	    </div>
+    <%end%>
   </div>
 </nav>
+
+<div id="row">
+<%=render "/recipes/search"%>
+</div>
+
+</div>
 
 <div class="col-xs-12 col-sm-4 col-md-3">
 
 	<%=render "show"%>
-
-	<div class="row">
-		<h4>Cookbook</h4>
-		<%=text_field_tag :search, nil, placeholder: "Search"%>
-		<%=submit_tag "Go"%>
-	</div>
-
-	<div class="row">
-		Main Ingredient <i class="glyphicon glyphicon-chevron-down" style="float:right"></i>
-	</div>
-
-	<div class="row">
-		Cuisine <i class="glyphicon glyphicon-chevron-down" style="float:right"></i>
-	</div>
-
-	<div class="row">
-		Seasonal Recipes <i class="glyphicon glyphicon-chevron-down" style="float:right"></i>
-	</div>
-
 	
 
 </div>
 
-<div class="col-xs-12 col-sm-8 col-md-9" id="row">
-
-
-	<%@recipes.each do |recipe|%>
-
-	<div class="col-xs-12 col-sm-12 col-md-4 boxes" id="<%=recipe.id%>">
-
-		<%=link_to recipe_path(recipe) do%>
-
-			<div class="food-photo row">
-				<%if recipe.food_photo.present?%>
-					<%=image_tag recipe.food_photo.thumb.url%>
-				<%else%>
-					<%=image_tag recipe.food_photo.default_url%>
-				<%end%>
-			    <div class="middle">
-			    	<i class="glyphicon glyphicon-search"></i>
-			    </div>
-			</div>
-		
-
-		<div class="row">
-			<strong><%=recipe.title%></strong><br>
-
-		<%end%>
-
-			by: <%=link_to "#{recipe.user.name}", "/users/#{recipe.user.id}/recipes"%><br>
-
-			<%=link_to new_favourite_path(user: @user, recipe: recipe),remote: true do%>
-				<%if !signed_in? || !@favourites.include?(recipe.id)%>
-					<i class="glyphicon glyphicon-heart-empty"></i> 
-				<%else%>
-					<i class="glyphicon glyphicon-heart"></i>
-				<%end%>
-			<%end%>
-			&nbsp <span><%=number_with_delimiter(recipe.favourites.count)%></span>
-		</div>
-	</div>
-
-	<%end%>
-
-</div>

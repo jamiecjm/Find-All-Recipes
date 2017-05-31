@@ -1,12 +1,16 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :confirm_current_user, only: [:edit,:update,:destroy]
 
-
+  require 'wikipedia'
 
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all.includes(:user,:favourites)
+    @recipes = Recipe.all.includes(:user,favourites: [:user])
+    @recipes_id = @recipes.pluck(:id)
+    @user = current_user
+    @favourites = current_user_favourites
   end
 
   # GET /recipes/1
@@ -59,6 +63,43 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    @recipes = Recipe.where('id' => params[:ids]).where('id' => PgSearch.multisearch(params[:search]).pluck(:searchable_id))
+    @recipes_id = @recipes.pluck(:id)
+    @user = current_user
+    @favourites = current_user_favourites
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def filter
+    if params[:type] == "mi"
+      @recipes = Recipe.where('id' => params[:ids]).where(main_ingredient_id: params[:filter_id])
+    else
+      @recipes = Recipe.where('id' => params[:ids]).where(cuisine_id: params[:filter_id])
+    end
+    @recipes_id = @recipes.pluck(:id)
+    @user = current_user
+    @favourites = current_user_favourites
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def facts
+    @ingredient = Ingredient.find(params[:id]).ingredient
+    page = Wikipedia.find(@ingredient)
+    @summary = page.summary
+    if @summary == nil
+      page = Wikipedia.find(@ingredient.split(" ").first)
+      @summary = page.summary
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
@@ -72,6 +113,12 @@ class RecipesController < ApplicationController
                                       instructions_attributes: [:id,:_destroy,:step,:title,:description,:step_photo])
     end
 
+    def confirm_current_user
+      if @recipe.user != @current_user && @current_user.role != "Admin"
+        flash[:danger] = "Sorry, you don't have access to that page"
+        redirect_to '/'
+      end
+    end
 
 end
 

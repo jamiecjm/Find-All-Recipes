@@ -1,0 +1,60 @@
+  <%@recipes.each do |recipe|%>
+
+  <div class="col-xs-12 col-sm-12 col-md-4 boxes" id="<%=recipe.id%>">
+
+    <%=link_to recipe_path(recipe) do%>
+
+      <div class="food-photo row">
+        <%if recipe.food_photo.present?%>
+          <%=image_tag recipe.food_photo.url%>
+        <%else%>
+          <%=image_tag recipe.food_photo.default_url%>
+        <%end%>
+          <div class="middle">
+            <i class="glyphicon glyphicon-search"></i>
+          </div>
+      </div>
+    
+
+    <div class="row">
+      <strong><%=recipe.title%></strong><br>
+
+    <%end%>
+
+       <%=link_to "by: #{recipe.user.name}", "/users/#{recipe.user.id}/recipes"%><br>
+
+      <%=link_to new_favourite_path(user: @user, recipe: recipe),remote: true do%>
+        <%if !signed_in? || !@favourites.include?(recipe.id)%>
+          <i class="glyphicon glyphicon-heart-empty"></i> 
+        <%else%>
+          <i class="glyphicon glyphicon-heart"></i>
+        <%end%>
+      <%end%>
+      &nbsp 
+      <%=link_to "/fav/#{recipe.id}", remote: true do%>
+        <%=number_with_delimiter(recipe.favourites.count)%>
+      <%end%>
+    </div>
+  </div>
+
+  <%end%>
+
+  <div id="favModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

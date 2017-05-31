@@ -22,9 +22,19 @@ class FavouritesController < ApplicationController
 	end
 
 	def index
-		@favourites = current_user.favourites.includes(recipe: [:user,favourites:[:user]])
 		@user = current_user
-		@current_user_favourites = current_user_favourites
+		ids = @user.favourites.pluck(:recipe_id)
+		@recipes = Recipe.where('id' => ids).includes(:user, favourites:[:user])
+		@recipes_id = @recipes.pluck(:id)
+		@favourites = current_user_favourites
+	end
+
+	def fav
+		@recipe = Recipe.find(params[:id])
+		@favourites = @recipe.favourites.includes(:user)
+		respond_to do |format|
+			format.js
+		end
 	end
 
 end

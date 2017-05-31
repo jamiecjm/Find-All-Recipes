@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+<div class="panel-body">
+
+  <h2>Reset Password</h2>
+
+  <p>Enter email address to receive reset password instructions</p>
+
+  <%= form_tag '/passwords' do %>
+    <div class="form-group">
+      <%= label_tag :email %>
+      <%= email_field_tag :email,nil,type: "email",class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag "Reset", class: "btn btn-default" %>
+    </div>
+  <% end %>
+
+</div>
+</div>

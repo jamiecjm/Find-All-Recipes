@@ -1,0 +1,3 @@
+<%@favourites.each do |fav|%>
+	<a href= "/users/<%=fav.user.id%>/recipes"><%=fav.user.name%></a><br>
+<%end%>

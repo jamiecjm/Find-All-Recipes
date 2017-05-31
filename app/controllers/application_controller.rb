@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include FavouritesHelper
 
+  before_action :set_current_user
+
 
   def login_required
   	if !signed_in?
@@ -13,6 +15,12 @@ class ApplicationController < ActionController::Base
 	      format.json { head :no_content }
 	    end
   	end
+  end
+
+  def set_current_user
+    if signed_in?
+      @current_user = current_user
+    end
   end
 
 end

@@ -27,4 +27,21 @@ document.addEventListener("turbolinks:load",function(){
 			yearRange: "-100:+0" 
 	    });
 	})
+
+	main_list = $('.main-ingredient li')
+	hidden_list1 = main_list.slice(5,main_list.length-1)
+	hidden_list1.hide();
+
+	cuisine_list = $('.cuisine li')
+	hidden_list2 = cuisine_list.slice(5,cuisine_list.length-1)
+	hidden_list2.hide();
+
+	$(".main-ingredient .last").click(function(){
+		hidden_list1.toggle();
+	});
+
+	$(".cuisine .last").click(function(){
+	    hidden_list2.toggle();
+	});	
+
 })

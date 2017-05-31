@@ -12,16 +12,19 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 
+  enum roles: ["Admin","User"]
+
+  attr_accessor :original_password
+  
 	def titleize
 		self.name = self.name.titleize if self.name.present?
 	end
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
-      byebug
       user = self.new(
         name: auth_hash["info"]["name"],
         email: auth_hash["extra"]["raw_info"]["email"],
-        avatar: auth_hash["info"]["image"]
+        remote_avatar_url: auth_hash["info"]["image"]+"?type=large"
       )
       user.save(validate: false)
       user.authentications << authentication
@@ -33,5 +36,7 @@ class User < ApplicationRecord
       x = self.authentications.find_by(provider: 'facebook')
       return x.token unless x.nil?
     end
+
+
 	
 end

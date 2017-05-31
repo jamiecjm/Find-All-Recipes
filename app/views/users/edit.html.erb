@@ -6,6 +6,21 @@
 
 			<%= render partial: 'form', object: form %>
 
+	        <div class="form-group">
+	          <%= form.label :original_password %>
+	          <%= form.password_field :original_password,class: "form-control",required: true,placeholder: "Leave it blank if you don't have a password" %>
+	        </div>
+
+	        <div class="form-group">
+	          <%= form.label :password %>
+	          <%= form.password_field :password,class: "form-control",required: true %>
+	        </div>
+
+	        <div class="form-group">
+	          <%= form.label :password_confirmation %>
+	          <%= form.password_field :password_confirmation,class: "form-control",required: true %>
+	        </div>
+
 		  <div class="actions">
 		    <%= form.submit "Update",class: "btn btn-default" %>
 		  </div>

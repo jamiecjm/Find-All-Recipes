@@ -19,6 +19,17 @@
       <div class="actions">
         <%= form.submit "Create Account",class: "btn btn-default" %>
       </div>
+      <br>
+        <p>Or</p>
+        <div class="row">
+          <div class="col-xs-8 col-sm-5 col-md-5">
+        <%= link_to "/auth/facebook" do%>
+          <%=image_tag "facebook-login.png"%>
+        <%end%>
+        </div>
+        <div class="col-sm-4 col-md-7">
+        </div>
+      </div>
     <% end %>
 
   </div>

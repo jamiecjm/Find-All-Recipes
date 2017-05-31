@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531011240) do
+ActiveRecord::Schema.define(version: 20170531063209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(version: 20170531011240) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.string   "searchable_type"
+    t.integer  "searchable_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -94,6 +103,7 @@ ActiveRecord::Schema.define(version: 20170531011240) do
     t.string   "email"
     t.string   "name"
     t.string   "avatar"
+    t.integer  "role"
     t.string   "password_digest"
     t.string   "reset_password_token"
     t.datetime "created_at",           null: false

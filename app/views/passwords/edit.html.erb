@@ -1,0 +1,21 @@
+<div class="panel panel-default col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+  <div class="panel-body">
+    <h1 class="page-header">Change Password</h1>
+<%=form_tag '/update_passwords' do%>
+    <div class="form-group">
+      <%= label_tag :password %>
+      <%= password_field_tag :password,nil,class: "form-control",required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password_confirmation %>
+      <%= password_field_tag :password_confirmation,nil,class: "form-control",required: true %>
+    </div>
+
+      <div class="actions">
+        <%= submit_tag "Update",class: "btn btn-default" %>
+      </div>
+    <%=hidden_field_tag :user_id, @user.id%>
+<%end%>
+	</div>
+</div>

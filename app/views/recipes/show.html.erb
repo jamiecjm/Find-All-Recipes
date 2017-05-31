@@ -49,14 +49,16 @@
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<div class="page-header tag col-md-12">
+		<div class="page-header">
 			INGREDIENTS
 		</div>
-		<ul style="list-style-type:none">
-		<%@recipe.ingredients.each do |ing|%>
-			<li><%=ing.amount.round%> <%=ing.unit%> <%=ing.ingredient%></li>
-		<%end%>
-		</ul>
+		<div class="list-group">
+			<%@recipe.ingredients.each do |ing|%>
+				<%=link_to "/ingredients_fact/#{ing.id}",:remote => true,class: "list-group-item" do%>
+					<%=ing.amount.round%> <%=ing.unit%> <%=ing.ingredient%>
+				<%end%>
+			<%end%>
+		</div>
 	</div>
 </div>
 
@@ -74,7 +76,7 @@
 					<%else%>
 						<%=image_tag ins.step_photo.default_url%>
 					<%end%>
-					<div class="page-header"><%=ins.step%>&nbsp<%=ins.title%></div>
+					<div class="page-header"><span><%=ins.step%></span>&nbsp<%=ins.title%></div>
 					<p><%=ins.description%></p>
 
 
@@ -85,3 +87,23 @@
 </div>
 
 
+<!-- Modal -->
+<div id="factsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
