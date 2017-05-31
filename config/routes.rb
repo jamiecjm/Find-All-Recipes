@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/users/:id/recipes' => "users#recipes"
   resources :sessions, controller: "sessions", only: [:new,:create,:destroy]
   resources :favourites, controller: "favourites", only: [:new,:index]
+
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 end

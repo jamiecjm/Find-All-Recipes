@@ -61,7 +61,6 @@ class UsersController < ApplicationController
 
   def recipes
     @recipes = @user.recipes.includes(:user,favourites: [:user])
-    @user = current_user
     @favourites = current_user_favourites
   end
 

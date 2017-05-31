@@ -1,14 +1,21 @@
 class FavouritesController < ApplicationController
 
+	# before_action :login_required, only: :new
+
 	def new
-		@favourite = Favourite.new(user_id: params[:user], recipe_id: params[:recipe])
-		@recipe = Recipe.find(params[:recipe])
 		respond_to do |format|
-			if @favourite.save
-				format.js 
+			if signed_in?
+				@favourite = Favourite.new(user_id: params[:user], recipe_id: params[:recipe])
+				@recipe = Recipe.find(params[:recipe])
+				if @favourite.save
+					format.js 
+				else
+					@favourite = Favourite.find_by(user_id: params[:user], recipe_id: params[:recipe])
+					@favourite.destroy
+					format.js
+				end
 			else
-				@favourite = Favourite.find_by(user_id: params[:user], recipe_id: params[:recipe])
-				@favourite.destroy
+				flash[:info] = "Please sign in"
 				format.js
 			end
 		end

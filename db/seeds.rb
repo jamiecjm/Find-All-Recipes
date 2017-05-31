@@ -50,12 +50,6 @@ ActiveRecord::Base.transaction do
   	user = User.new
   	user[:name] = Faker::Name.name
   	user[:email] = Faker::Internet.email
-  	user[:birthday] = Faker::Date.birthday(18, 65)
-    user[:phone_no] = Faker::PhoneNumber.cell_phone
-  	user[:street] = Faker::Address.street_address
-  	user[:city] = Faker::Address.city
-  	user[:postcode] = Faker::Address.postcode
-  	user[:state] = Faker::Address.state
   	user.save
   	user.update(password: "abc")
   end

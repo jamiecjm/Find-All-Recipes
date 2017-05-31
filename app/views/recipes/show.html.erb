@@ -67,7 +67,7 @@
 		</div>
 
 			<%@recipe.instructions.order("step").each do |ins|%>
-				<div class="col-md-6">
+				<div class="col-md-6" style="position: relative">
 
 					<%if ins.step_photo.present?%>
 						<%=image_tag ins.step_photo.url%>

@@ -58,3 +58,9 @@ gem "mini_magick"
 gem "nested_form"
 gem 'rails_admin'
 gem 'faker'
+gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'figaro'
+gem 'foreman'
+gem 'rails_12factor'
+gem 'unicorn'
