@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    if @user.authenticate(params[:original_password]) || @user.password_digest == nil
+    if @user.password_digest == nil || @user.authenticate(user_params[:original_password])
       if @user.update(user_params)
         flash[:success] = 'Profile updated.'
         redirect_to '/'
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name,:email,:password,:password_confirmation,:avatar)
+      params.require(:user).permit(:name,:email,:password,:password_confirmation,:avatar,:original_password)
     end
 
 
