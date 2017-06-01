@@ -15,50 +15,32 @@
 <br>
 <hr />
 
-<div class="panel-group" id="accordion" >
-  <div class="panel panel-default">
-    <div class="panel-heading" >
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" >
-        <h4>Main Ingredient</h4>
-        </a>
-      </h4>
-    </div>
-    <div id="collapse1" class="panel-collapse collapse in">
-      <ul class="list-group main-ingredient">
-        <%MainIngredient.all.order("name").each do |mi|%>
-          <li class="list-group-item" >
-          <%=link_to filter_recipes_path(ids: @recipes_id,filter_id: mi.id, type: "mi"),:remote => true do%>
-            <%=mi.name%>
-          <%end%>
-          </li>
-        <%end%>
-          <li class="list-group-item last">See More</li>
-      </ul>
-    </div>
-  </div>
 
-  <hr />
-  
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" >
-        <h4>Cuisine</h4>
-        </a>
-      </h4>
-    </div>
-    <div id="collapse2" class="panel-collapse collapse in">
-      <ul class="list-group cuisine">
-        <%Cuisine.all.order("name").each do |cuisine|%>
-          <li class="list-group-item">
-            <%=link_to filter_recipes_path(ids: @recipes_id,filter_id: cuisine.id),:remote => true do%>
-              <%=cuisine.name%>
-            <%end%>
-          </li>
-        <%end%>
-          <li class="list-group-item last">See More</li>
-      </ul>
-    </div>
-  </div>
-</div>
+<h4>Main Ingredient</h4>
+
+<ul class="main-ingredient" style="list-style-type:none;margin-left: -30px;">
+  <%MainIngredient.all.order("name").each do |mi|%>
+    <li >
+      <%=link_to filter_recipes_path(ids: @recipes_id,filter_id: mi.id, type: "mi"),:remote => true do%>
+        <%=mi.name%>
+      <%end%>
+    </li>
+  <%end%>
+  <li class="last">See More</li>
+</ul> 
+
+
+<hr />
+
+
+<h4>Cuisine</h4>
+<ul class="cuisine" style="list-style-type:none;margin-left: -30px;">
+  <%Cuisine.all.order("name").each do |cuisine|%>
+    <li >
+      <%=link_to filter_recipes_path(ids: @recipes_id,filter_id: cuisine.id),:remote => true do%>
+        <%=cuisine.name%>
+      <%end%>
+    </li>
+  <%end%>
+  <li class="last">See More</li>
+</ul>
