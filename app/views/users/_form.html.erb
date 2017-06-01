@@ -13,6 +13,16 @@
 
   <div class="form-group">
     <%= form.label :profile_picture, "Profile Picture"%>
+    <%if @user.avatar?%>
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <%= image_tag @user.avatar.url, class: "img-responsive img-circle"%>
+        </div>
+      </div>  
+      <%= form.check_box :remove_avatar %>
+      <%= form.label 'Remove picture'%>
+    <%end%>
+    
     <%= form.file_field :avatar,class: "form-control" %>
   </div>
 

@@ -21,6 +21,15 @@
 
       <div class="form-group">
         <%=f.label :food_photo, "Photo"%>
+        <%if @recipe.food_photo?%>
+        <div class="row">
+          <div class="col-sm-3 col-md-3">
+            <%= image_tag @recipe.food_photo.url, class: "img-responsive"%>
+          </div>
+        </div>
+          <%= f.check_box :remove_food_photo %>
+          <%= f.label 'Remove picture'%>
+        <%end%>
         <%=f.file_field :food_photo,class: "form-control"%>
       </div>
     </div>

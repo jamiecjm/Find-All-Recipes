@@ -1,6 +1,16 @@
   <div class="col-md-6" style="margin-bottom: 100px;">
     <div>
       <%=fff.label :step_photo%>
+      <%if fff.object.step_photo?%>
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <%= image_tag fff.object.step_photo.url, class: "img-responsive"%>
+          </div>
+        </div>
+        <%= fff.check_box :remove_step_photo %>
+        <%= fff.label 'Remove picture'%>   
+      <%end%>
+
       <%=fff.file_field :step_photo,class: "form-control"%>
       <br>
       <div class="col-xs-3 col-sm-3 col-md-3">

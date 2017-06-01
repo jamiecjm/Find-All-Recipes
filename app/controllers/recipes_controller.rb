@@ -110,9 +110,9 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:user_id,:title,:description,:servings,:cooktime1,:cooktime2,:food_photo,:cuisine_id,:main_ingredient_id,
+      params.require(:recipe).permit(:user_id,:title,:description,:servings,:cooktime1,:cooktime2,:food_photo,:cuisine_id,:main_ingredient_id,:remove_food_photo,
                                       ingredients_attributes: [:id,:_destroy,:amount,:unit,:ingredient],
-                                      instructions_attributes: [:id,:_destroy,:step,:title,:description,:step_photo])
+                                      instructions_attributes: [:id,:_destroy,:step,:title,:description,:step_photo,:remove_step_photo])
     end
 
     def confirm_current_user
