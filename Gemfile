@@ -70,3 +70,19 @@ gem 'wikipedia-client'
 gem "letter_opener", :group => :development
 gem "fog"
 gem 'kaminari'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'guard-rspec', require: false
+  gem 'byebug'
+  gem 'guard-rspec'
+  gem 'guard-puma'
+  gem 'rspec'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'factory_girl_rails'
+  gem 'shoulda-callback-matchers'
+  gem 'rspec-given'
+end

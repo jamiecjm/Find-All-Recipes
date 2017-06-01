@@ -1,6 +1,6 @@
 class FavouritesController < ApplicationController
 
-	# before_action :login_required, only: :new
+	before_action :login_required, only: :index
 	
 
 	def new

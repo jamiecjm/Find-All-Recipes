@@ -7,14 +7,10 @@ class ApplicationController < ActionController::Base
 
   
   def login_required
-  	if !signed_in?
-  		session[:path] = request.fullpath
-  		byebug
-	    respond_to do |format|
-	      format.html { redirect_to '/sessions/new', notice: 'Please sign in' }
-	      format.json { head :no_content }
-	    end
-  	end
+    if !signed_in?
+      flash[:info] = "Please Sign In"
+      redirect_to '/sessions/new'
+    end
   end
 
   def set_current_user

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   
+  before_action :login_required, only: [:edit,:update]
   before_action :set_user, only: [:show, :edit, :update, :destroy,:recipes]
   before_action :confirm_current_user, only: [:edit,:update,:destroy]
 
