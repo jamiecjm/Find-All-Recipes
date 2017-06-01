@@ -8,7 +8,14 @@
           </div>
         </div>
         <%= fff.check_box :remove_step_photo %>
-        <%= fff.label 'Remove picture'%>   
+        <%= fff.label 'Remove picture'%>
+      <%elsif request.fullpath != '/recipes/new'%>
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <%= image_tag fff.object.step_photo.url, class: "img-responsive"%>
+          </div>
+        </div> 
+        <br>          
       <%end%>
 
       <%=fff.file_field :step_photo,class: "form-control"%>
