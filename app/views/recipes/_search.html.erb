@@ -1,3 +1,4 @@
+<div id="row">
   <%@recipes.order("updated_at DESC").each do |recipe|%>
 
   <div class="col-xs-12 col-sm-6 col-md-4 boxes" id="<%=recipe.id%>" >
@@ -57,6 +58,7 @@
     </div>
 
   </div>
+</div>
 </div>
 <div class="row">
     <%= paginate @recipes %>
