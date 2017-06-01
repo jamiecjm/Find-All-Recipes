@@ -19,4 +19,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin_user!
+    if !signed_in? || current_user.role != 0
+      flash[:info] = "Sorry, you don't have access to that page."
+      redirect_to root_url
+    end
+  end
+
 end
