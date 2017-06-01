@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def recipes
-    @recipes = @user.recipes.includes(:user,favourites: [:user])
+    @recipes = @user.recipes.includes(:user,:favourites)
     @recipes_id = @recipes.pluck(:id)
     @favourites = current_user_favourites
   end
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 
 
     def confirm_current_user
-      if @user != current_user && current_user.role != 0
+      if @user != @current_user && @current_user.role != 0
         flash[:danger] = "Sorry, you don't have access to that page"
         redirect_to '/'
       end

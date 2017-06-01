@@ -26,7 +26,7 @@
               <li><a href="/users/<%=@current_user.id%>/recipes">My Recipes</a></li>
               <li><a href="/recipes/new">Create New Recipe</a></li>
               <li><a href="/favourites">Favourites</a></li>
-              <%if current_user.role == 0%>
+              <%if @current_user.role == 0%>
                 <li><a href="/admin">Admin</a></li>
               <%end%>
             <%end%>

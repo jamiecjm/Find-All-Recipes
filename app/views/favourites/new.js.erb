@@ -1,10 +1,10 @@
 <%if @favourite != nil%>
 	id = "#"+String('<%=@recipe.id%>')
 	<%if Favourite.exists?(@favourite)%>
-		$(id+" .glyphicon-heart-empty").parent().next().html("<%=raw number_with_delimiter(@recipe.favourites.count)%>")
+		$(id+" .glyphicon-heart-empty").parent().next().html("<%=raw number_with_delimiter(@recipe.total_favourites)%>")
 		$(id+" .glyphicon-heart-empty").attr('class','glyphicon glyphicon-heart')
 	<%else%>
-		$(id+" .glyphicon-heart").parent().next().html("<%=raw number_with_delimiter(@recipe.favourites.count)%>")
+		$(id+" .glyphicon-heart").parent().next().html("<%=raw number_with_delimiter(@recipe.total_favourites)%>")
 		$(id+" .glyphicon-heart").attr('class','glyphicon glyphicon-heart-empty')
 	<%end%>
 <%else%>

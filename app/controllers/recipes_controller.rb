@@ -10,9 +10,9 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all.includes(:user,favourites: [:user])
+    @recipes = Recipe.all.includes(:user,:favourites)
     @recipes_id = @recipes.pluck(:id)
-    @user = current_user
+    @user = @current_user
     @favourites = current_user_favourites
   end
 
@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
   def search
     @recipes = Recipe.where('id' => params[:ids]).where('id' => PgSearch.multisearch(params[:search]).pluck(:searchable_id))
     @recipes_id = @recipes.pluck(:id)
-    @user = current_user
+    @user = @current_user
     @favourites = current_user_favourites
     respond_to do |format|
       format.js
@@ -83,7 +83,7 @@ class RecipesController < ApplicationController
       @recipes = Recipe.where('id' => params[:ids]).where(cuisine_id: params[:filter_id])
     end
     @recipes_id = @recipes.pluck(:id)
-    @user = current_user
+    @user = @current_user
     @favourites = current_user_favourites
     respond_to do |format|
       format.js
@@ -117,7 +117,7 @@ class RecipesController < ApplicationController
     end
 
     def confirm_current_user
-      if @recipe.user != current_user && current_user.role != 0
+      if @recipe.user != @current_user && @current_user.role != 0
         flash[:danger] = "Sorry, you don't have access to that page"
         redirect_to '/'
       end

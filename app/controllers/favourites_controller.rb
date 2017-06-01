@@ -9,11 +9,12 @@ class FavouritesController < ApplicationController
 				@favourite = Favourite.new(user_id: params[:user], recipe_id: params[:recipe])
 				@recipe = Recipe.find(params[:recipe])
 				if @favourite.save
-					@recipe.update(updated_at: Time.now)
+					@recipe.update(total_favourites: @recipe.total_favourites+=1)
 					format.js 
 				else
 					@favourite = Favourite.find_by(user_id: params[:user], recipe_id: params[:recipe])
 					@favourite.destroy
+					@recipe.update(total_favourites: @recipe.total_favourites-=1)
 					format.js
 				end
 			else
@@ -24,9 +25,9 @@ class FavouritesController < ApplicationController
 	end
 
 	def index
-		@user = current_user
+		@user = @current_user
 		ids = @user.favourites.pluck(:recipe_id)
-		@recipes = Recipe.where('id' => ids).includes(:user, favourites:[:user])
+		@recipes = Recipe.where('id' => ids).includes(:user, :favourites)
 		@recipes_id = @recipes.pluck(:id)
 		@favourites = current_user_favourites
 	end

@@ -30,7 +30,7 @@
       <%end%>
       &nbsp 
       <%=link_to "/fav/#{recipe.id}", remote: true do%>
-        <%=number_with_delimiter(recipe.favourites.count)%>
+        <%=number_with_delimiter(recipe.total_favourites)%>
       <%end%>
     </div>
   </div>
