@@ -9,6 +9,7 @@ class FavouritesController < ApplicationController
 				@favourite = Favourite.new(user_id: params[:user], recipe_id: params[:recipe])
 				@recipe = Recipe.find(params[:recipe])
 				if @favourite.save
+					@recipe.update(updated_at: Time.now)
 					format.js 
 				else
 					@favourite = Favourite.find_by(user_id: params[:user], recipe_id: params[:recipe])

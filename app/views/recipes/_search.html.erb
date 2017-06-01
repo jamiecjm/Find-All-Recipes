@@ -1,4 +1,4 @@
-  <%@recipes.each do |recipe|%>
+  <%@recipes.order("updated_at DESC").each do |recipe|%>
 
   <div class="col-xs-12 col-sm-12 col-md-4 boxes" id="<%=recipe.id%>">
 
