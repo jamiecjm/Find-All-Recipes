@@ -14,7 +14,7 @@ class FavouritesController < ApplicationController
 				else
 					@favourite = Favourite.find_by(user_id: params[:user], recipe_id: params[:recipe])
 					@favourite.destroy
-					@recipe.update(total_favourites: @recipe.total_favourites-=1)
+					@recipe.update(total_favourites: @recipe.favourites.count)
 					format.js
 				end
 			else
