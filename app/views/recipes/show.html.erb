@@ -70,20 +70,20 @@
 		<div class="page-header">
 			INSTRUCTIONS<!-- <button class="btn btn-default" style="float:right">Open in Slide Mode</button> -->
 		</div>
-		<div id="row" >
+		
 			<%@recipe.instructions.order("step").each do |ins|%>
-				<div class="col-md-6" style="margin-bottom: 100px;">
+				<div style="margin-bottom: 100px;">
 					<div class="row">
-					<div class="col-sm-5 col-md-12"><%=image_tag ins.step_photo.url%><p></p></div>
-					<div class="col-sm-7 col-md-12">
-					<span class="red"><%=ins.step%></span>&nbsp<%=ins.title%><hr />
-					<p><%=ins.description%></p>
-					</div>
+						<div class="col-sm-5 col-md-5"><%=image_tag ins.step_photo.url%><p></p></div>
+						<div class="col-sm-7 col-md-7">
+							<span class="red"><%=ins.step%></span>&nbsp<%=ins.title%><hr />
+							<p><%=ins.description%></p>
+						</div>
 					</div>
 				</div>
 			
 			<%end%>
-		</div>
+		
 	</div>
 </div>
 
