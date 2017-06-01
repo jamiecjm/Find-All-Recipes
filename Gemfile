@@ -78,7 +78,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard-rspec', require: false
   gem 'byebug'
-  gem 'guard-rspec'
   gem 'guard-puma'
   gem 'rspec'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
