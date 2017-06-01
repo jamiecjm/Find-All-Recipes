@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/users/:id/recipes' => "users#recipes"
 
   resources :sessions, controller: "sessions", only: [:new,:create,:destroy]
+
   resources :favourites, controller: "favourites", only: [:new,:index]
   get '/fav/:id' => 'favourites#fav'
 

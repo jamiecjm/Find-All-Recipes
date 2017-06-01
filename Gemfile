@@ -69,3 +69,4 @@ gem 'rest-client'
 gem 'wikipedia-client'
 gem "letter_opener", :group => :development
 gem "fog"
+gem 'kaminari'

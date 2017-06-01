@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
 	mount_uploader :food_photo, FoodUploader
 	include PgSearch
 	multisearchable :against => [:title]
+	paginates_per 18
 
 	belongs_to :user, optional: true
 	has_many :ingredients

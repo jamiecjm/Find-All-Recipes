@@ -5,12 +5,14 @@ class RecipesController < ApplicationController
 
   
 
+  
+
   require 'wikipedia'
 
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all.includes(:user,:favourites)
+    @recipes = Recipe.all.includes(:user,:favourites).page params[:page]
     @recipes_id = @recipes.pluck(:id)
     @user = @current_user
     @favourites = current_user_favourites

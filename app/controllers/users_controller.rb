@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def recipes
-    @recipes = @user.recipes.includes(:user,:favourites)
+    @recipes = @user.recipes.includes(:user,:favourites).page params[:page]
     @recipes_id = @recipes.pluck(:id)
     @favourites = current_user_favourites
   end

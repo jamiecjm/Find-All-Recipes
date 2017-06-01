@@ -27,7 +27,7 @@ class FavouritesController < ApplicationController
 	def index
 		@user = @current_user
 		ids = @user.favourites.pluck(:recipe_id)
-		@recipes = Recipe.where('id' => ids).includes(:user, :favourites)
+		@recipes = Recipe.where('id' => ids).includes(:user, :favourites).page params[:page]
 		@recipes_id = @recipes.pluck(:id)
 		@favourites = current_user_favourites
 	end
