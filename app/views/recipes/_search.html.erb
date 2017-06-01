@@ -5,11 +5,9 @@
     <%=link_to recipe_path(recipe) do%>
 
       <div class="food-photo row">
-        <%if recipe.food_photo.present?%>
+
           <%=image_tag recipe.food_photo.url%>
-        <%else%>
-          <%=image_tag recipe.food_photo.default_url%>
-        <%end%>
+
           <div class="middle">
             <i class="glyphicon glyphicon-search"></i>
           </div>

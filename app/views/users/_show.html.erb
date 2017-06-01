@@ -3,11 +3,9 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="profile-image">
-			<% if @user.avatar.present? %>
-				<%= image_tag @user.avatar.url, :class => "img-responsive img-circle" %>
-			<% else %> 
-				<%= image_tag @user.avatar.default_url, :class => "img-responsive img-circle" %>
-			<%end%>
+
+			<%= image_tag @user.avatar.url, :class => "img-responsive img-circle" %>
+
 		</div>
 
 

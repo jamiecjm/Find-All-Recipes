@@ -16,11 +16,9 @@
       </div>
     </nav>
 
-    <%if @recipe.food_photo.present?%>
-		<%=image_tag @recipe.food_photo.url if @recipe.food_photo.present?%>
-	<%else%>
-		<%=image_tag @recipe.food_photo.default_url%>
-	<%end%>
+
+		<%=image_tag @recipe.food_photo.url%>
+
 
 </div>
 
@@ -64,27 +62,24 @@
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<div class="page-header tag col-md-12">
+		<div class="page-header">
 			INSTRUCTIONS<!-- <button class="btn btn-default" style="float:right">Open in Slide Mode</button> -->
 		</div>
-
+		<div id="row">
 			<%@recipe.instructions.order("step").each do |ins|%>
 				<div class="col-md-6" style="position: relative">
-
-					<%if ins.step_photo.present?%>
 						<%=image_tag ins.step_photo.url%>
-					<%else%>
-						<%=image_tag ins.step_photo.default_url%>
-					<%end%>
 					<div class="page-header"><span><%=ins.step%></span>&nbsp<%=ins.title%></div>
 					<p><%=ins.description%></p>
 
 
 				</div>
-
+			
 			<%end%>
+		</div>
 	</div>
 </div>
+
 
 
 <!-- Modal -->
