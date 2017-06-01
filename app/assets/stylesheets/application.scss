@@ -4,12 +4,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+body {
+  background: url('background-pattern-1410202414xHR.jpg')
+}
 /*Navbar*/
 
-nav {
-  background-color:white;
-}
+
 
 .boxes .image {
   opacity: 1;
@@ -112,4 +112,19 @@ img {
 h1,h2,h3,h4,h5,h6{
   font-size:20px;
   font-weight: bold;
+}
+
+/*number in circle*/
+span.red {
+  background: red;
+   border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.6em;
+  margin-right: 15px;
+  text-align: center;
+  width: 1.6em; 
 }

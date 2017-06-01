@@ -1,6 +1,6 @@
   <%@recipes.order("updated_at DESC").each do |recipe|%>
 
-  <div class="col-xs-12 col-sm-12 col-md-4 boxes" id="<%=recipe.id%>">
+  <div class="col-xs-12 col-sm-12 col-md-4 boxes" id="<%=recipe.id%>" >
 
     <%=link_to recipe_path(recipe) do%>
 
@@ -23,14 +23,14 @@
 
       <%=link_to new_favourite_path(user: @user, recipe: recipe),remote: true do%>
         <%if !signed_in? || !@favourites.include?(recipe.id)%>
-          <i class="glyphicon glyphicon-heart-empty"></i> 
+          <i class="glyphicon glyphicon-heart-empty"  style="font-size:20px"></i> 
         <%else%>
-          <i class="glyphicon glyphicon-heart"></i>
+          <i class="glyphicon glyphicon-heart"  style="font-size:20px"></i>
         <%end%>
       <%end%>
       &nbsp 
       <%=link_to "/fav/#{recipe.id}", remote: true do%>
-        <%=number_with_delimiter(recipe.total_favourites)%>
+        <span><%=number_with_delimiter(recipe.total_favourites)%></span>
       <%end%>
     </div>
   </div>

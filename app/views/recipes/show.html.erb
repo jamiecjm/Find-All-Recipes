@@ -22,7 +22,7 @@
 
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" style="font-size:18px">
 	<div class="panel-body">
 		<div class="page-header col-xs-12 col-sm-12 col-md-12">
 			<div class="col-xs-6 col-sm-6 col-md-6">
@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" style="font-size:18px">
 	<div class="panel-body">
 		<div class="page-header">
 			INGREDIENTS
@@ -53,14 +53,19 @@
 		<div class="list-group">
 			<%@recipe.ingredients.each do |ing|%>
 				<%=link_to "/ingredients_fact/#{ing.id}",:remote => true,class: "list-group-item" do%>
-					<%=ing.amount.round%> <%=ing.unit%> <%=ing.ingredient%>
+					<%if ing.amount%1 == 0%>
+						<%=ing.amount.round%> 
+					<%else%>
+						<%=ing.amount%> 
+					<%end%>
+					<%=ing.unit%> <%=ing.ingredient%>
 				<%end%>
 			<%end%>
 		</div>
 	</div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" style="font-size:18px">
 	<div class="panel-body">
 		<div class="page-header">
 			INSTRUCTIONS<!-- <button class="btn btn-default" style="float:right">Open in Slide Mode</button> -->
@@ -69,7 +74,7 @@
 			<%@recipe.instructions.order("step").each do |ins|%>
 				<div class="col-md-6" style="margin-bottom: 100px;">
 						<%=image_tag ins.step_photo.url%>
-					<div class="page-header"><span><%=ins.step%></span>&nbsp<%=ins.title%></div>
+					<div class="page-header"><span class="red"><%=ins.step%></span>&nbsp<%=ins.title%></div>
 					<p><%=ins.description%></p>
 
 

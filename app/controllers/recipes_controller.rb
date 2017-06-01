@@ -69,7 +69,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @recipes = Recipe.where('id' => params[:ids]).where('id' => PgSearch.multisearch(params[:search]).pluck(:searchable_id))
+    @recipes = Recipe.where('id' => params[:ids]).where('id' => PgSearch.multisearch(params[:search]).pluck(:searchable_id)).page params[:page]
     @recipes_id = @recipes.pluck(:id)
     @user = @current_user
     @favourites = current_user_favourites
@@ -80,9 +80,9 @@ class RecipesController < ApplicationController
 
   def filter
     if params[:type] == "mi"
-      @recipes = Recipe.where('id' => params[:ids]).where(main_ingredient_id: params[:filter_id])
+      @recipes = Recipe.where('id' => params[:ids]).where(main_ingredient_id: params[:filter_id]).page params[:page]
     else
-      @recipes = Recipe.where('id' => params[:ids]).where(cuisine_id: params[:filter_id])
+      @recipes = Recipe.where('id' => params[:ids]).where(cuisine_id: params[:filter_id]).page params[:page]
     end
     @recipes_id = @recipes.pluck(:id)
     @user = @current_user
