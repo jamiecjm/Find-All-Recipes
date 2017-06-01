@@ -2,29 +2,30 @@
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<div class="profile-image">
+		<div class="col-sm-4 col-sm-4 col-md-12">
 
 			<%= image_tag @user.avatar.url, :class => "img-responsive img-circle" %>
 
 		</div>
 
+		<div class="col-sm-8 col-sm-8 col-md-12">
+			<h3><%=@user.name%></h3>
+			<table class="table">
+				<tbody class="table">
 
-		<h3><%=@user.name%></h3>
-		<table class="table">
-			<tbody class="table">
+					<tr>
+						<th >E-mail: </th>
+						<td><%=@user.email%></td>
+					</tr>
 
-				<tr>
-					<th >E-mail: </th>
-					<td><%=@user.email%></td>
-				</tr>
+					<tr>
+						<th >Total Recipes: </th>
+						<td><%=@user.recipes.count%></td>
+					</tr>
 
-				<tr>
-					<th >Total Recipes: </th>
-					<td><%=@user.recipes.count%></td>
-				</tr>
-
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 

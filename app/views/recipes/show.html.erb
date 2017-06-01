@@ -17,7 +17,7 @@
     </nav>
 
 
-		<%=image_tag @recipe.food_photo.url%>
+	<%=image_tag @recipe.food_photo.url%>
 
 
 </div>
@@ -73,11 +73,13 @@
 		<div id="row" >
 			<%@recipe.instructions.order("step").each do |ins|%>
 				<div class="col-md-6" style="margin-bottom: 100px;">
-						<%=image_tag ins.step_photo.url%>
-					<div class="page-header"><span class="red"><%=ins.step%></span>&nbsp<%=ins.title%></div>
+					<div class="row">
+					<div class="col-sm-5 col-md-12"><%=image_tag ins.step_photo.url%><p></p></div>
+					<div class="col-sm-7 col-md-12">
+					<span class="red"><%=ins.step%></span>&nbsp<%=ins.title%><hr />
 					<p><%=ins.description%></p>
-
-
+					</div>
+					</div>
 				</div>
 			
 			<%end%>
