@@ -2,6 +2,17 @@
 
 An application for food enthusiasts and home-cooks to share recipes, built with Ruby on Rails, Javascript, CSS and HTML.
 
+### Core modules
+
+* user can create an account
+* user can create an account using Facebook OAuth
+* user can retrieve lost passwords
+* user can change their passwords
+* user can post new recipes
+* user can like recipes
+* user can follow other users
+* user have a profile showing their liked recipes
+
 ## Project Screenshots
 
 #### Homepage:   
