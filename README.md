@@ -22,35 +22,41 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Rails version
 
 ```
-Give examples
+gem 'rails', '~> 5.0.3'
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Clone this repository into your local machine.
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+#### Installing Gem
 
 ```
-until finished
+$ bundle install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+#### Initialising Database
+
+Creating database
+
+```
+$ rails db:create
+```
+
+Migrating database
+
+```
+$ rails db:migrate
+```
 
 ## Running the tests
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+<!-- ### Break down into end to end tests
 
 Explain what these tests test and why
 
@@ -60,21 +66,21 @@ Give an example
 
 ### And coding style tests
 
-Explain what these tests test and why
+Explain what these tests test and why -->
 
 ```
-Give an example
+$ rspec
 ```
 
-## Deployment
+<!-- ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Add additional notes about how to deploy this on a live system -->
 
-## Built With
+<!-- ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds -->
 
 <!-- ## Contributing
 
@@ -91,6 +97,14 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 <!-- See also the list of [contributors](https://github.com/J-D-Kitchen/contributors) who participated in this project. -->
 
 ## Reflection
+
+This was a 1 week long project built for my final project at Next Academy Coding/Digital Marketing School. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+
+Originally I wanted to build an application that is similar to the famous 'Blue Apron' application that allowed users to sign up for groceries delivery system and save their favourite recipes.
+
+One of the main challenges I ran into was Testing. This lead me to spend a few days on a research spike into RSpec, Capaybara, and FactoryBot. Due to project time constraints, I had to focus more on testing only the core modules.
+
+At the end of the day, the technologies implemented in this project are Ruby on Rails, Javascript, CSS, Bootstrap and HTML.
 
   <!-- - What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
   - What did you set out to build?
