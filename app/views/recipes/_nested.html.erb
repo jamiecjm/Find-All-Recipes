@@ -4,11 +4,21 @@
           INGREDIENTS
         </div>
         <ul style="list-style-type:none">
+          <li class="form-group row">
+            <div class="col-xs-2 col-sm-2 col-md-2">
+              <%=f.label :amount%>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+              <%=f.label :unit%>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <%=f.label :ingredient%>
+            </div>
+          </li>
           <%=f.fields_for :ingredients,Ingredient.new,class: "form-inline" do |ff|%>
             <%=render "ingredient", ff: ff%> 
           <%end%>
-          <br>
-          <%= f.link_to_add "+", :ingredients, class: "btn btn-default",style: "margin-left: 15px;" %>
+          <%= f.link_to_add "+", :ingredients, class: "btn btn-default" %>
         </ul>
       </div>
     </div>

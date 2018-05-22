@@ -1,15 +1,14 @@
-  <div style="margin-bottom: 100px;">
-    <div class="row">
+<div style="margin-bottom: 100px;">
+  <div class="row">
+    <div class="col-sm-5 col-md-5">
+      <%=fff.label :picture%>
 
-      <div class="col-sm-5 col-md-5">
-      <%=fff.label :step_photo%>
-      
-        <div class="row">
-          <div class="col-sm-8 col-md-8">
-            <%= image_tag fff.object.step_photo.url, class: "img-responsive"%>
-            <p></p>
-          </div>
+      <div class="row">
+        <div class="col-sm-8 col-md-8">
+          <%= image_tag fff.object.step_photo.url, class: "img-responsive"%>
+          <p></p>
         </div>
+      </div>
       <%if fff.object.step_photo?%>
         <%= fff.check_box :remove_step_photo %>
         <%= fff.label 'Remove picture'%>
@@ -17,21 +16,24 @@
 
       <%=fff.file_field :step_photo,class: "form-control"%>
       <br>
-      </div>
+    </div>
 
-      <div class="col-sm-7 col-md-7">
+    <div class="col-sm-7 col-md-7">
       <div class="col-xs-3 col-sm-3 col-md-3">
-      <%=fff.number_field :step,placeholder:"Step eg. 1",class: "form-control"%>
+        <%=fff.label :step_number%>
+        <%=fff.number_field :step,placeholder:"eg. 1",class: "form-control"%>
       </div>
       <div class="col-xs-9 col-sm-9 col-md-9">
-      <%=fff.text_field :title,placeholder:"Step Title eg. Cook the rice",class: "form-control"%>
+        <%=fff.label :title%>
+        <%=fff.text_field :title,placeholder:"eg. Cook the rice",class: "form-control"%>
       </div>
-      
-      <%=fff.label :description%>
-      <%=fff.text_area :description,class: "form-control", rows: "10"%>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <%=fff.label :description%>
+        <%=fff.text_area :description,class: "form-control", rows: "10"%>
       </div>
-
     </div>
-    <%= fff.link_to_remove "Remove this step" %>
-    <br>
+
   </div>
+  <%= fff.link_to_remove "Remove this step" %>
+  <br>
+</div>
