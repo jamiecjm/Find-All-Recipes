@@ -5,7 +5,7 @@
 
     <%=link_to recipe_path(recipe) do%>
 
-      <div class="food-photo row">
+      <div class="food-photo">
 
           <%=image_tag recipe.food_photo.url%>
 
@@ -13,32 +13,34 @@
             <i class="glyphicon glyphicon-search"></i>
           </div>
       </div>
-    
 
-    <div class="row">
+
+    <div class="food-description">
       <strong><%=recipe.title%></strong><br>
 
     <%end%>
 
        <%=link_to "by: #{recipe.user.name}", "/users/#{recipe.user.id}/recipes"%><br>
 
-      <%=link_to new_favourite_path(user: @user, recipe: recipe),remote: true do%>
-        <%if !signed_in? || !@favourites.include?(recipe.id)%>
-          <i class="glyphicon glyphicon-heart-empty"  style="font-size:20px"></i> 
-        <%else%>
-          <i class="glyphicon glyphicon-heart"  style="font-size:20px"></i>
+       <div class='favourite-icon'>
+        <%=link_to new_favourite_path(user: @user, recipe: recipe),remote: true do%>
+          <%if !signed_in? || !@favourites.include?(recipe.id)%>
+            <i class="glyphicon glyphicon-heart-empty"  style="font-size:20px"></i>
+          <%else%>
+            <i class="glyphicon glyphicon-heart"  style="font-size:20px"></i>
+          <%end%>
         <%end%>
-      <%end%>
-      &nbsp 
-      <%=link_to "/fav/#{recipe.id}", remote: true do%>
-        <span><%=number_with_delimiter(recipe.total_favourites)%></span>
-      <%end%>
+        <!-- &nbsp
+        <%=link_to "/fav/#{recipe.id}", remote: true do%>
+          <span><%=number_with_delimiter(recipe.total_favourites)%></span>
+        <%end%> -->
+      </div>
     </div>
   </div>
 
   <%end%>
 
-  
+
 
   <div id="favModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

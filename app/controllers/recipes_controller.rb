@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :login_required, only: [:new,:edit,:create,:update,:destroy]
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   before_action :confirm_current_user, only: [:edit,:update,:destroy]
-  
+
 
   require 'wikipedia'
 
@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   # GET /recipes.json
   def index
     @recipes = Recipe.all.includes(:user,:favourites).page params[:page]
-    @recipes_id = @recipes.pluck(:id)
+    @recipes_id = @recipes&.pluck(:id)
     @user = @current_user
     @favourites = current_user_favourites
   end
@@ -123,5 +123,3 @@ class RecipesController < ApplicationController
     end
 
 end
-
-
