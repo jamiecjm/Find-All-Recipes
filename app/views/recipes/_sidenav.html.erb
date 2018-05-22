@@ -1,24 +1,6 @@
+<h3>Main Ingredient</h3>
 
-  <div class="row">
-    <h4>Cookbook</h4>
-    <%=form_tag search_recipes_path(ids: @recipes.pluck(:id)),:remote => true,class: "form-inline" do%>
-    <div class="form-group">
-    <div class="col-xs-8 col-sm-8 col-md-8">
-        <%=text_field_tag :search, nil, placeholder: "Search by recipe name",class: "form-control"%>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4">
-        <%=submit_tag "Go",class: "btn btn-default"%>
-    </div>
-    </div>
-    <%end%>
-  </div>
-<br>
-<hr />
-
-
-<h4>Main Ingredient</h4>
-
-<ul class="main-ingredient" style="list-style-type:none;margin-left: -30px;">
+<ul class="main-ingredient">
   <%MainIngredient.all.order("name").each do |mi|%>
     <li >
       <%=link_to filter_recipes_path(ids: @recipes_id,filter_id: mi.id, type: "mi"),:remote => true do%>
@@ -27,14 +9,14 @@
     </li>
   <%end%>
   <li class="last">See More</li>
-</ul> 
+</ul>
 
 
 <hr />
 
 
-<h4>Cuisine</h4>
-<ul class="cuisine" style="list-style-type:none;margin-left: -30px;">
+<h3>Cuisine</h3>
+<ul class="cuisine">
   <%Cuisine.all.order("name").each do |cuisine|%>
     <li >
       <%=link_to filter_recipes_path(ids: @recipes_id,filter_id: cuisine.id),:remote => true do%>

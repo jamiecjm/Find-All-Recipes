@@ -9,10 +9,10 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+    <nav class="navbar navbar-fixed-top">
+      <div class="container-fluid">
         <div class="navbar-header">
-          <div class="navbar-brand">J & D Kitchen</div>
+          <div class="navbar-brand">Find All Recipes</div>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -52,7 +52,23 @@
         </div>
       </div>
     </nav>
-    <div class="wrapper col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+    <div class='search-bar'>
+      <div class="container-fluid">
+      	<div class='col-xs-4'>
+      		<h3>Cookbook</h3>
+      	</div>
+      	<div class='col-xs-8'>
+      		<%=form_tag search_recipes_path(ids: @recipes.pluck(:id)),:remote => true,class: "form-inline" do%>
+      		<div class="form-group">
+      			<%=text_field_tag :search, nil, placeholder: "Search by recipe name",class: "form-control"%>
+      		</div>
+      		<%=submit_tag "Go",class: "btn btn-default"%>
+
+      		<%end%>
+      	</div>
+      </div>
+    </div>
+    <div class="main container-fluid">
       <% flash.each do |key, value| -%>
         <%if key == "alert" || key == "notice"%>
           <%key = "info"%>
