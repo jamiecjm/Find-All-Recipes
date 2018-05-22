@@ -38,7 +38,7 @@ Clone this repository into your local machine.
 $ bundle install
 ```
 
-#### Initialising Database
+#### Initializing Database
 
 Creating database
 
@@ -54,7 +54,7 @@ $ rails db:migrate
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+RSpec, in conjunction with Capybara and FactoryBot, are used in this project as the testing framework.
 
 <!-- ### Break down into end to end tests
 
@@ -67,6 +67,7 @@ Give an example
 ### And coding style tests
 
 Explain what these tests test and why -->
+Running test is easy
 
 ```
 $ rspec
@@ -88,13 +89,13 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/J-D-Kitchen/tags).
+I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/jamiecjm/Find-All-Recipes/tags).
 
 ## Author
 
-* **Jie Mee Chong** - *Initial work* - [Jie Mee Chong](https://jiemeechong.com)
+* [Jie Mee Chong](https://jiemeechong.com)
 
-<!-- See also the list of [contributors](https://github.com/J-D-Kitchen/contributors) who participated in this project. -->
+<!-- See also the list of [contributors](https://github.com/jamiecjm/Find-All-Recipes/contributors) who participated in this project. -->
 
 ## Reflection
 
